@@ -1,8 +1,3 @@
-"""OpenAI LLM provider implementation.
-
-This module implements the OpenAI provider with retry logic,
-error handling, and cost tracking.
-"""
 
 from __future__ import annotations
 

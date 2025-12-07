@@ -1,8 +1,4 @@
-"""Conversation history management.
 
-This module manages conversation history, providing methods to add
-messages, clear history, and export conversations.
-"""
 
 from __future__ import annotations
 
@@ -17,13 +13,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Message:
-    """A single message in the conversation.
-    
-    Attributes:
-        role: Message role ('user', 'assistant', or 'system')
-        content: Message content
-        timestamp: When the message was created
-    """
+   
     
     role: str
     content: str

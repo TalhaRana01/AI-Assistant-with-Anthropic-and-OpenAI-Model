@@ -1,8 +1,4 @@
-"""Logging configuration utilities.
 
-This module provides centralized logging configuration with support
-for different log levels and formats.
-"""
 
 from __future__ import annotations
 
@@ -16,21 +12,7 @@ def setup_logging(
     log_file: Path | str | None = None,
     format_string: str | None = None
 ) -> None:
-    """Setup application logging configuration.
-    
-    Configures logging with the specified level and optional file output.
-    Uses a clean format that includes timestamp, level, and message.
-    
-    Args:
-        level: Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-        log_file: Optional path to log file
-        format_string: Optional custom format string
-        
-    Example:
-        >>> setup_logging(level="DEBUG")
-        >>> logger = logging.getLogger(__name__)
-        >>> logger.info("Application started")
-    """
+   
     # Convert string level to logging constant
     numeric_level = getattr(logging, level.upper(), logging.INFO)
     
@@ -73,11 +55,7 @@ def setup_logging(
 
 
 class SensitiveDataFilter(logging.Filter):
-    """Filter to prevent sensitive data from being logged.
-    
-    This filter removes or redacts sensitive information like API keys
-    from log messages.
-    """
+  
     
     SENSITIVE_PATTERNS = [
         "sk-",  # OpenAI keys
@@ -88,14 +66,7 @@ class SensitiveDataFilter(logging.Filter):
     ]
     
     def filter(self, record: logging.LogRecord) -> bool:
-        """Filter log record to remove sensitive data.
-        
-        Args:
-            record: Log record to filter
-            
-        Returns:
-            True to allow the record, False to block it
-        """
+       
         message = record.getMessage().lower()
         
         for pattern in self.SENSITIVE_PATTERNS:
